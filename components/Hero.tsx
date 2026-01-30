@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ scenes, generatedImages, onGenerate,
               </div>
               
               <div className="flex flex-col gap-4 items-start">
-                <button className="w-full md:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-3 group text-center">
+                <button className="w-full md:w-auto px-8 py-4 bg-[#bb6622] hover:bg-[#a0551c] text-white rounded-full font-bold text-lg shadow-lg hover:shadow-[#bb6622]/50 transition-all flex items-center justify-center gap-3 group text-center">
                   See How the 5 Guardians Protect Your Home
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>

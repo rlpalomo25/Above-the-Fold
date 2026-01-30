@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
             <a href="#" className="hover:text-blue-300 transition-colors">Technology</a>
             <a href="#" className="hover:text-blue-300 transition-colors">Performance</a>
             <a href="#" className="hover:text-blue-300 transition-colors">Guarantee</a>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/50 flex items-center gap-2">
+            <button className="bg-[#bb6622] hover:bg-[#a0551c] text-white px-6 py-2 rounded-full font-bold transition-all shadow-lg hover:shadow-[#bb6622]/50 flex items-center gap-2">
               <Phone size={18} />
               Get a Free Estimate
             </button>

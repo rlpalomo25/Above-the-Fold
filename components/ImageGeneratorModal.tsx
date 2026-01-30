@@ -84,7 +84,7 @@ export const ImageGeneratorModal: React.FC<ImageGeneratorModalProps> = ({ onGene
                   <button
                     type="submit"
                     disabled={!apiKey}
-                    className="flex-1 py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg font-bold shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 py-3 px-4 bg-[#bb6622] hover:bg-[#a0551c] text-white rounded-lg font-bold shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Generate Magic
                   </button>
