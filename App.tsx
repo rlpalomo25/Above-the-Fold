@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrustBar } from './components/TrustBar';
 import { TheProblem } from './components/TheProblem';
 import { HomeownerHero } from './components/HomeownerHero';
 import { AegisSystem } from './components/AegisSystem';
-import { Features } from './components/Features';
 import { Scene, GeneratedImagesMap } from './types';
 import { generateSceneImages } from './services/gemini';
 
@@ -38,9 +37,12 @@ const SCENES: Scene[] = [
   }
 ];
 
+const API_KEY = "AIzaSyD4lSw3I0f5XuIqNmGFcWbq9Vhko_qKtRE";
+
 const App: React.FC = () => {
   const [generatedImages, setGeneratedImages] = useState<GeneratedImagesMap>({});
   const [isGenerating, setIsGenerating] = useState(false);
+  const hasStartedGeneration = useRef(false);
 
   const handleGenerateImages = async (apiKey: string) => {
     setIsGenerating(true);
@@ -55,20 +57,28 @@ const App: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    // Prevent double-firing in StrictMode
+    if (hasStartedGeneration.current) return;
+    hasStartedGeneration.current = true;
+
+    // Automatically trigger image generation on mount
+    // handleGenerateImages(API_KEY); 
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       <Hero 
         scenes={SCENES} 
         generatedImages={generatedImages} 
-        onGenerate={handleGenerateImages} 
+        onGenerate={() => handleGenerateImages(API_KEY)} 
         isGenerating={isGenerating}
       />
       <TrustBar />
       <TheProblem />
       <HomeownerHero />
       <AegisSystem />
-      <Features />
       
       <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800 relative z-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
