@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { TrustBar } from './components/TrustBar';
 import { Features } from './components/Features';
 import { Scene, GeneratedImagesMap } from './types';
 import { generateSceneImages } from './services/gemini';
@@ -60,6 +61,7 @@ const App: React.FC = () => {
         onGenerate={handleGenerateImages} 
         isGenerating={isGenerating}
       />
+      <TrustBar />
       <Features />
       
       <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">

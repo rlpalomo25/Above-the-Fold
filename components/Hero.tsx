@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Scene, GeneratedImagesMap } from '../types';
 import { ImageGeneratorModal } from './ImageGeneratorModal';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, PlayCircle } from 'lucide-react';
 
 interface HeroProps {
   scenes: Scene[];
@@ -96,13 +96,21 @@ export const Hero: React.FC<HeroProps> = ({ scenes, generatedImages, onGenerate,
                  </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-3 group">
-                  Get Your Free Inspection
+              <div className="flex flex-col gap-4 items-start">
+                <button className="w-full md:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-3 group text-center">
+                  See How the 5 Guardians Protect Your Home
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <div className="flex justify-center sm:justify-start">
-                   <ImageGeneratorModal onGenerate={onGenerate} isGenerating={isGenerating} hasImages={Object.keys(generatedImages).length > 0} />
+                
+                <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                    <button className="px-6 py-4 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm text-white rounded-full font-bold text-lg transition-all flex items-center justify-center gap-3">
+                      <PlayCircle className="w-6 h-6" />
+                      Watch the 60-Second Rain Test
+                    </button>
+
+                    <div className="flex justify-center sm:justify-start">
+                       <ImageGeneratorModal onGenerate={onGenerate} isGenerating={isGenerating} hasImages={Object.keys(generatedImages).length > 0} />
+                    </div>
                 </div>
               </div>
             </motion.div>
