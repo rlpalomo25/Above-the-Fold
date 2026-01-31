@@ -30,31 +30,42 @@ export const SimpleSteps: React.FC = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white relative z-[80] sticky top-0 rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden">
-      <motion.div style={{ y }} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="py-24 relative z-[80] sticky top-0 rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden bg-slate-900">
+      
+      {/* Background Image & Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://i.imgur.com/VdyspPZ.jpeg" 
+          alt="MasterShield Installation" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/85 backdrop-blur-[2px]"></div>
+      </div>
+
+      <motion.div style={{ y }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">
             Three Simple Steps to <br className="hidden md:block"/> Permanent Gutter Protection
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative mb-20">
           {/* Connector Line for Desktop */}
-          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gray-100 z-0 -translate-y-1/2"></div>
+          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-white/20 z-0 -translate-y-1/2 border-t border-dashed border-white/30"></div>
           
           {steps.map((step) => (
             <div key={step.id} className="relative z-10 flex flex-col items-center text-center group">
               {/* Number Container */}
-              <div className="w-24 h-24 bg-white rounded-full border-4 border-blue-50 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:border-blue-500 transition-all duration-300 relative">
-                <span className="text-4xl font-black text-gray-300 group-hover:text-blue-600 transition-colors">
+              <div className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:bg-[#bb6622] group-hover:border-[#bb6622] transition-all duration-300 relative">
+                <span className="text-4xl font-black text-white group-hover:text-white transition-colors">
                   {step.id}
                 </span>
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 mb-4 max-w-[280px]">
+              <h3 className="text-xl font-bold text-white mb-4 max-w-[280px]">
                 {step.title}
               </h3>
-              <p className="text-gray-600 font-medium leading-relaxed max-w-[280px]">
+              <p className="text-blue-100 font-medium leading-relaxed max-w-[280px]">
                 {step.description}
               </p>
             </div>
@@ -68,7 +79,7 @@ export const SimpleSteps: React.FC = () => {
             <ArrowRight className="group-hover:translate-x-1 transition-transform" />
           </button>
           
-          <button className="w-full md:w-auto px-8 py-4 bg-white border-2 border-gray-900 text-gray-900 rounded-full font-bold text-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow-md">
+          <button className="w-full md:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-full font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow-md">
             <PlayCircle className="w-6 h-6" />
             Watch the 3-Year Time-Lapse
           </button>
