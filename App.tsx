@@ -7,6 +7,8 @@ import { HomeownerHero } from './components/HomeownerHero';
 import { AegisSystem } from './components/AegisSystem';
 import { ComparisonTable } from './components/ComparisonTable';
 import { HomeownerKnowledge } from './components/HomeownerKnowledge';
+import { Testimonials } from './components/Testimonials';
+import { SimpleSteps } from './components/SimpleSteps';
 import { Scene, GeneratedImagesMap } from './types';
 import { generateSceneImages } from './services/gemini';
 
@@ -83,6 +85,8 @@ const App: React.FC = () => {
       <AegisSystem />
       <ComparisonTable />
       <HomeownerKnowledge />
+      <Testimonials />
+      <SimpleSteps />
       
       <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800 relative z-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
