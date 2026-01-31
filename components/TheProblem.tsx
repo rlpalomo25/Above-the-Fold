@@ -3,7 +3,7 @@ import { AlertTriangle, ArrowDown, Droplets, Home, Zap } from 'lucide-react';
 
 export const TheProblem: React.FC = () => {
   return (
-    <section className="py-24 bg-gray-900 text-white relative z-20 shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden rounded-t-[3rem] -mt-16">
+    <section className="py-24 bg-gray-900 text-white relative z-20 shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden rounded-t-[3rem] -mt-16 sticky top-0">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-800 to-transparent opacity-20 pointer-events-none" />
       

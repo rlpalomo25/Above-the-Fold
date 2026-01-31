@@ -3,7 +3,7 @@ import { Clock, Calendar, BadgeCheck, Home, Shield, MapPin, Infinity } from 'luc
 
 export const TrustBar: React.FC = () => {
   return (
-    <section className="pt-16 pb-24 bg-white relative z-10 rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.1)]">
+    <section className="pt-16 pb-24 bg-white relative z-10 rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.1)] sticky top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Row: Service Guarantees */}

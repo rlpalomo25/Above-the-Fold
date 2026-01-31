@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useAnimationFrame } from 'framer-motion';
 import { Quote, ShieldCheck, Hammer, TrendingUp, Sprout, UserCheck, Award } from 'lucide-react';
 
 export const HomeownerKnowledge: React.FC = () => {
@@ -41,6 +41,49 @@ export const HomeownerKnowledge: React.FC = () => {
   // Create a duplicated list for infinite seamless scrolling
   const carouselItems = [...cards, { isQuote: true, text: quote }, ...cards, { isQuote: true, text: quote }];
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const [contentWidth, setContentWidth] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // Measure content width for wrapping
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        // The content is duplicated, so the wrap point is half the total scroll width
+        setContentWidth(containerRef.current.scrollWidth / 2);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  // Auto-scroll animation loop
+  useAnimationFrame((t, delta) => {
+    if (!isHovered && !isDragging) {
+      // Adjust speed here (higher = faster)
+      const moveBy = 0.5 * (delta / 16); 
+      x.set(x.get() - moveBy);
+    }
+  });
+
+  // Handle infinite wrapping
+  useEffect(() => {
+    const unsubscribe = x.on("change", (latest) => {
+      if (contentWidth > 0) {
+        if (latest <= -contentWidth) {
+          x.set(latest + contentWidth);
+        } else if (latest > 0) {
+          x.set(latest - contentWidth);
+        }
+      }
+    });
+    return unsubscribe;
+  }, [contentWidth, x]);
+
   return (
     <section className="py-24 bg-[#131a29] text-white overflow-hidden relative z-[60] rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.5)]">
       
@@ -59,23 +102,21 @@ export const HomeownerKnowledge: React.FC = () => {
       <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[#131a29] to-transparent z-20 pointer-events-none"></div>
 
       {/* Scrolling Container */}
-      <div className="flex overflow-hidden">
+      <div className="flex overflow-hidden" ref={containerRef}>
         <motion.div 
-          className="flex gap-6 md:gap-8 px-8 w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ 
-            repeat: Infinity, 
-            ease: "linear", 
-            duration: 60 // Adjust speed here
-          }}
-          // Pause animation on hover for readability
-          whileHover={{ animationPlayState: "paused" }} 
+          className="flex gap-6 md:gap-8 px-8 w-max cursor-grab active:cursor-grabbing"
+          style={{ x }}
+          drag="x"
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={() => setIsDragging(false)}
         >
           {carouselItems.map((item: any, index) => (
             <div 
               key={index} 
               className={`
-                relative flex-shrink-0 w-[350px] md:w-[450px] p-8 rounded-3xl shadow-xl transition-transform hover:scale-[1.02]
+                relative flex-shrink-0 w-[350px] md:w-[450px] p-8 rounded-3xl shadow-xl transition-transform hover:scale-[1.02] select-none
                 ${item.isQuote 
                   ? 'bg-gradient-to-br from-blue-800 to-blue-900 border border-blue-500/30 text-white' 
                   : 'bg-white text-gray-900'

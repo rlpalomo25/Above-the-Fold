@@ -8,7 +8,7 @@ const COUPLE_IMAGE_URL = "https://i.imgur.com/VL6ObZv.jpeg";
 
 export const HomeownerHero: React.FC = () => {
   return (
-    <section className="relative z-30 min-h-[85vh] flex items-center bg-[#f2f2f2] shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.3)] overflow-hidden rounded-t-[3rem] -mt-16">
+    <section className="relative z-30 min-h-[85vh] flex items-center bg-[#f2f2f2] shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.3)] overflow-hidden rounded-t-[3rem] -mt-16 sticky top-0">
       
       {/* Right Side Image - Full Height */}
       <div className="absolute top-0 right-0 w-full lg:w-[70%] h-full z-0">
