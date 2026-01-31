@@ -85,7 +85,7 @@ export const Testimonials: React.FC = () => {
   }, [contentWidth, x]);
 
   return (
-    <section className="py-24 bg-gray-50 text-gray-900 relative z-[70] rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.1)]">
+    <section className="py-24 bg-gray-50 text-gray-900 relative z-[70] sticky top-0 rounded-t-[3rem] -mt-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.1)]">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-bold mb-4 border border-green-200">
