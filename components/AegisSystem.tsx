@@ -137,6 +137,16 @@ export const AegisSystem: React.FC = () => {
                 <div className="absolute top-8 right-8 text-white/30 font-black text-9xl select-none z-0">
                   {GUARDIANS.findIndex(g => g.id === activeId) + 1}
                 </div>
+
+                <motion.button
+                   initial={{ opacity: 0, x: 20 }}
+                   animate={{ opacity: 1, x: 0 }}
+                   transition={{ delay: 0.3 }}
+                   className="absolute bottom-8 right-8 md:bottom-12 md:right-12 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 transition-all z-20 backdrop-blur-sm group"
+                >
+                   Learn More <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+
               </motion.div>
             </AnimatePresence>
           </div>

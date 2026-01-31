@@ -2,9 +2,9 @@ import React from 'react';
 import { Check, X } from 'lucide-react';
 
 // -----------------------------------------------------------------------------
-// INSTRUCTION: Replace this URL with the link to the image you attached.
+// Updated to the specific image provided by the user
 // -----------------------------------------------------------------------------
-const COUPLE_IMAGE_URL = "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
+const COUPLE_IMAGE_URL = "https://i.imgur.com/VL6ObZv.jpeg";
 
 export const HomeownerHero: React.FC = () => {
   return (
